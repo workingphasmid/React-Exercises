@@ -14,7 +14,6 @@
 
 .todo > div {
   width: 100%;
-  padding: 0 16px;
 }
 
 .todo img,
@@ -33,6 +32,8 @@
 .todo__container-input {
   display: flex;
   gap: 16px;
+
+  padding: 0 16px;
 }
 
 .todo__input {
@@ -50,4 +51,22 @@
   color: white;
 
   padding: 8px;
+}
+
+.todo__shoes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px;
+
+  border-top: 1px solid #b8b8b8;
+}
+
+.todo__shoes-left,
+.todo__shoes-categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
