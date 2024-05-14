@@ -1,5 +1,6 @@
 import React from "react";
 import checkboxIcon from "../assets/checkbox.svg";
+import "./Items.css";
 
 function Items() {
   return (
@@ -18,6 +19,7 @@ function Item() {
       <div className="items__container-item">
         <div className="items__item">
           <img src={checkboxIcon} alt="" className="items__checkbox" />
+          <p className="items__title">Sample</p>
         </div>
         <div className="items__buttons">
           <button className="items__button button--update">update</button>

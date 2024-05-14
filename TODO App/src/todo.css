@@ -1,17 +1,28 @@
 .todo {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 20px;
 
   background-color: white;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.25);
 
   padding-top: 12px;
+  min-width: 564px;
 }
+
+.todo > div {
+  width: 100%;
+  padding: 0 16px;
+}
+
 .todo img,
 .todo button {
   border-radius: 4px;
   border: none;
+
+  cursor: pointer;
 }
 
 .todo__text--header {
@@ -26,10 +37,17 @@
 
 .todo__input {
   flex: 1;
+
+  border: #b8b8b8 solid 1px;
+  outline: none;
+
+  padding: 8px;
 }
 
 .todo__button-add {
   background-color: #81eaab;
 
   color: white;
+
+  padding: 8px;
 }

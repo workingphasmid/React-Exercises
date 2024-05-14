@@ -2,7 +2,7 @@ import React from "react";
 
 import Items from "./components/Items";
 
-import "./todo.css";
+import "./Todo.css";
 
 import searchIcon from "./assets/search.svg";
 
@@ -11,7 +11,7 @@ const Todo = () => {
     <div className="todo">
       <h1 className="todo__text--header">THINGS TO DO</h1>
       <div className="todo__container-input">
-        <input type="text" className="todo__input" />
+        <input type="text" className="todo__input" placeholder="Add a task..." />
         <button className="todo__button-add">add</button>
       </div>
       <Items />
