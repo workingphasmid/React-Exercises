@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Items from "./components/Items";
 
@@ -6,15 +6,33 @@ import "./Todo.css";
 
 import searchIcon from "./assets/search.svg";
 
+import { itemsData as initialItemsData } from "./data/itemsData.js";
+
+// for dev purposes
+let nextId = 0;
+
 const Todo = () => {
+  const [itemsData, setItemsData] = useState(initialItemsData);
+  const [newTask, setNewTask] = useState("");
+
+  function handleClickAdd() {
+    setItemsData([...itemsData, { title: newTask, checked: false, id: nextId++ }]);
+  }
+
+  function handleChangeTaskInput(e) {
+    setNewTask(e.target.value);
+  }
+
   return (
     <div className="todo">
       <h1 className="todo__text--header">THINGS TO DO</h1>
       <div className="todo__container-input">
-        <input type="text" className="todo__input" placeholder="Add a task..." />
-        <button className="todo__button-add">Add</button>
+        <input type="text" className="todo__input" placeholder="Add a task..." onChange={handleChangeTaskInput} />
+        <button className="todo__button-add" onClick={handleClickAdd}>
+          Add
+        </button>
       </div>
-      <Items />
+      <Items itemsData={itemsData} />
       <div className="todo__shoes">
         <div className="todo__shoes-left">
           <img src={searchIcon} alt="" className="todo__search" />

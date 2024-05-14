@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Items.css";
 
-import itemsData from "../data/itemsData.js";
-
-function Items() {
+function Items({ itemsData }) {
   return (
     <div className="items">
       {itemsData.map((item) => (
