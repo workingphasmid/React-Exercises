@@ -12,7 +12,7 @@ const Todo = () => {
       <h1 className="todo__text--header">THINGS TO DO</h1>
       <div className="todo__container-input">
         <input type="text" className="todo__input" placeholder="Add a task..." />
-        <button className="todo__button-add">add</button>
+        <button className="todo__button-add">Add</button>
       </div>
       <Items />
       <div className="todo__shoes">

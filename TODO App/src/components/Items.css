@@ -7,7 +7,47 @@
 }
 
 .items__container-item,
-.items__item {
+.items__item,
+.items__buttons {
   display: flex;
   align-items: center;
+}
+
+.items__container-item {
+  gap: 12px;
+
+  position: relative;
+}
+
+.items__divider {
+  height: 1px;
+  width: 100%;
+
+  background-color: #b8b8b8;
+
+  position: absolute;
+  bottom: -8px;
+}
+
+.items__item,
+.items__buttons {
+  gap: 4px;
+}
+
+.items__checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+.items__button {
+  padding: 8px;
+  color: white;
+}
+
+.button--update {
+  background-color: #81d7ea;
+}
+
+.button--delete {
+  background-color: #ea8781;
 }
