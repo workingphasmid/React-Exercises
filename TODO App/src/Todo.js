@@ -23,6 +23,8 @@ const Todo = () => {
     setNewTask(e.target.value);
   }
 
+  const itemsLength = itemsData.length;
+
   return (
     <div className="todo">
       <h1 className="todo__text--header">THINGS TO DO</h1>
@@ -36,7 +38,7 @@ const Todo = () => {
       <div className="todo__shoes">
         <div className="todo__shoes-left">
           <img src={searchIcon} alt="" className="todo__search" />
-          <p className="todo__text--shoes">Items left: 3</p>
+          <p className="todo__text--shoes">Items left: {itemsLength}</p>
         </div>
         <div className="todo__shoes-categories">
           <p className="todo__text--shoes">All</p>
