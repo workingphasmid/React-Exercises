@@ -4,14 +4,14 @@ import "./Items.css";
 function Items({ itemsData }) {
   return (
     <div className="items">
-      {itemsData.map((item) => (
-        <Item key={item.id} checked={item.checked} title={item.title} />
+      {itemsData.map((item, index) => (
+        <Item key={item.id} checked={item.checked} title={item.title} currentIndex={index} isLastItem={index == itemsData.length - 1} />
       ))}
     </div>
   );
 }
 
-function Item({ checked, title }) {
+function Item({ checked, title, isLastItem }) {
   return (
     <>
       <div className="items__container-item">
@@ -27,7 +27,7 @@ function Item({ checked, title }) {
             Delete
           </button>
         </div>
-        <div className="items__divider"></div>
+        {!isLastItem && <div className="items__divider"></div>}
       </div>
     </>
   );
