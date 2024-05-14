@@ -1,17 +1,18 @@
 import React from "react";
+
 import Items from "./components/Items";
+
+import "./todo.css";
 
 import searchIcon from "./assets/search.svg";
 
 const Todo = () => {
   return (
     <div className="todo">
-      <div className="todo__header">
-        <h1 className="todo__header-text">THINGS TO DO</h1>
-      </div>
+      <h1 className="todo__text--header">THINGS TO DO</h1>
       <div className="todo__container-input">
         <input type="text" className="todo__input" />
-        <button className="todo__button-addd">add</button>
+        <button className="todo__button-add">add</button>
       </div>
       <Items />
       <div className="todo__shoes">
