@@ -1,24 +1,25 @@
 import React from "react";
 import "./Items.css";
 
+import itemsData from "../data/itemsData.js";
+
 function Items() {
   return (
     <div className="items">
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      {itemsData.map((item) => (
+        <Item key={item.id} checked={item.checked} title={item.title} />
+      ))}
     </div>
   );
 }
 
-function Item() {
+function Item({ checked, title }) {
   return (
     <>
       <div className="items__container-item">
         <div className="items__item">
           <input className="items__checkbox" type="checkbox" />
-          <p className="items__title">Sample</p>
+          <p className="items__title">{title}</p>
         </div>
         <div className="items__buttons">
           <button type="button" className="items__button button--update">
