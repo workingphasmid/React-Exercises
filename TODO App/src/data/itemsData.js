@@ -2,22 +2,22 @@ export const itemsData = [
   {
     id: "jHlb5BmWij85b6PUr",
     title: "cook",
-    checked: false,
+    check: false,
   },
   {
     id: "qPkWws",
     title: "swept",
-    checked: false,
+    check: false,
   },
   {
     id: "3B4g0ay5nhCoRvHLW",
     title: "rule",
-    checked: false,
+    check: false,
   },
   {
     id: "D6TxXKr",
     title: "stood",
-    checked: false,
+    check: false,
   },
 ];
 

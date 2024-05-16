@@ -13,13 +13,18 @@ function Items({ itemsData }) {
   );
 }
 
-function Item({ checked, title, isLastItem, isUpdating, onDoneClick, onUpdateClick }) {
+function Item({ check, title, isLastItem, isUpdating, onDoneClick, onUpdateClick }) {
+  const [isChecked, setIsChecked] = useState(check);
+
+  function handleCheckboxChange() {
+    setIsChecked(!isChecked);
+  }
   return (
     <>
       {isUpdating ? (
         <div className="items__container-item">
           <div className="items__item">
-            <input className="items__checkbox" type="checkbox" />
+            <input className="items__checkbox" type="checkbox" onChange={handleCheckboxChange} checked={isChecked} />
             <p className="items__title">{title}</p>
           </div>
           <div className="items__buttons">
