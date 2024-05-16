@@ -23,6 +23,10 @@ const Todo = () => {
     setNewTask(e.target.value);
   }
 
+  function handleDeleteItemClick(deletedItemID) {
+    setItemsData(itemsData.filter((item) => item.id != deletedItemID));
+  }
+
   const itemsLength = itemsData.length;
 
   return (
@@ -34,7 +38,7 @@ const Todo = () => {
           Add
         </button>
       </div>
-      <Items itemsData={itemsData} />
+      <Items itemsData={itemsData} handleDeleteItemClick={handleDeleteItemClick} />
       <div className="todo__shoes">
         <div className="todo__shoes-left">
           <img src={searchIcon} alt="" className="todo__search" />

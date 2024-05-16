@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import "./Items.css";
 
-function Items({ itemsData }) {
-  const [updatingIndex, setUpdatingIndex] = useState(null);
+function Items({ itemsData, handleDeleteItemClick }) {
+  const [updatingId, setupdatingId] = useState(null);
 
   return (
     <div className="items">
       {itemsData.map((item, index) => (
-        <Item key={item.id} {...item} isLastItem={index == itemsData.length - 1} isUpdating={updatingIndex == index} onDoneClick={() => setUpdatingIndex(null)} onUpdateClick={() => setUpdatingIndex(index)} />
+        <Item key={item.id} {...item} isLastItem={index == itemsData.length - 1} isUpdating={updatingId == item.id} onDoneClick={() => setupdatingId(null)} onUpdateClick={() => setupdatingId(item.id)} handleDeleteItemClick={handleDeleteItemClick} />
       ))}
     </div>
   );
 }
 
-function Item({ check, title, isLastItem, isUpdating, onDoneClick, onUpdateClick }) {
+function Item({ id, check, title, isLastItem, isUpdating, onDoneClick, onUpdateClick, handleDeleteItemClick }) {
   const [isChecked, setIsChecked] = useState(check);
 
   function handleCheckboxChange() {
@@ -31,7 +31,7 @@ function Item({ check, title, isLastItem, isUpdating, onDoneClick, onUpdateClick
             <button type="button" className="items__button button--update" onClick={onDoneClick}>
               Done
             </button>
-            <button type="button" className="items__button button--delete">
+            <button type="button" className="items__button button--delete" onClick={() => handleDeleteItemClick(id)}>
               Delete
             </button>
           </div>
