@@ -1,30 +1,25 @@
 import React, { useState } from "react";
 import "./Items.css";
 
-function Items({ itemsData, handleDeleteItemClick }) {
+function Items({ itemsData, handleDeleteItemClick, handleCheckItemClick }) {
   const [updatingId, setupdatingId] = useState(null);
 
   return (
     <div className="items">
       {itemsData.map((item, index) => (
-        <Item key={item.id} {...item} isLastItem={index == itemsData.length - 1} isUpdating={updatingId == item.id} onDoneClick={() => setupdatingId(null)} onUpdateClick={() => setupdatingId(item.id)} handleDeleteItemClick={handleDeleteItemClick} />
+        <Item key={item.id} {...item} isLastItem={index == itemsData.length - 1} isUpdating={updatingId == item.id} onDoneClick={() => setupdatingId(null)} onUpdateClick={() => setupdatingId(item.id)} handleDeleteItemClick={handleDeleteItemClick} handleCheckItemClick={handleCheckItemClick} />
       ))}
     </div>
   );
 }
 
-function Item({ id, check, title, isLastItem, isUpdating, onDoneClick, onUpdateClick, handleDeleteItemClick }) {
-  const [isChecked, setIsChecked] = useState(check);
-
-  function handleCheckboxChange() {
-    setIsChecked(!isChecked);
-  }
+function Item({ id, check, title, isLastItem, isUpdating, onDoneClick, onUpdateClick, handleDeleteItemClick, handleCheckItemClick }) {
   return (
     <>
       {isUpdating ? (
         <div className="items__container-item">
           <div className="items__item">
-            <input className="items__checkbox" type="checkbox" onChange={handleCheckboxChange} checked={isChecked} />
+            <input className="items__checkbox" type="checkbox" onChange={() => handleCheckItemClick(id)} checked={check} />
             <p className="items__title">{title}</p>
           </div>
           <div className="items__buttons">
