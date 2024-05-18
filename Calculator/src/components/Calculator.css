@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
 
-  min-width: 500px;
-  min-height: 500px;
+  width: 500px;
+  height: 500px;
 }
 
 .calculator__input {
@@ -16,5 +16,7 @@
   text-align: right;
 
   color: white;
-  font-size: 32px;
+  font-size: 64px;
+
+  flex: 0.15;
 }
