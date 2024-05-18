@@ -16,7 +16,7 @@ const Todo = () => {
   const [newTask, setNewTask] = useState("");
 
   function handleClickAdd() {
-    setItemsData([...itemsData, { title: newTask, checked: false, id: nextId++ }]);
+    setItemsData([...itemsData, { title: newTask, check: false, id: nextId++ }]);
   }
 
   function handleChangeTaskInput(e) {
