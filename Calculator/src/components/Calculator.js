@@ -2,6 +2,8 @@ import React from "react";
 
 import Buttons, { Left, Right } from "./Buttons";
 
+import "./Calculator.css";
+
 export function Calculator() {
   return (
     <div className="calculator">

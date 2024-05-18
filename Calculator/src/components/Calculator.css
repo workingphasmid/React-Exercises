@@ -1,0 +1,20 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 500px;
+  min-height: 500px;
+}
+
+.calculator__input {
+  background-color: #848693;
+  border: none;
+  outline: none;
+
+  padding: 4px;
+
+  text-align: right;
+
+  color: white;
+  font-size: 32px;
+}
