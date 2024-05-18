@@ -15,6 +15,8 @@ const Todo = () => {
   const [itemsData, setItemsData] = useState(initialItemsData);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [newTask, setNewTask] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchedItems, setSearchedItems] = useState([]);
 
   function handleClickAdd() {
     setItemsData([...itemsData, { title: newTask, check: false, id: nextId++ }]);
@@ -39,6 +41,10 @@ const Todo = () => {
     setItemsData(newItemsData);
   }
 
+  function handleSearchEnter(e) {
+    setSearchedItems(patternMatching(e.target.value, itemsData));
+  }
+
   const itemsLength = itemsData.length;
 
   return (
@@ -50,10 +56,11 @@ const Todo = () => {
           Add
         </button>
       </div>
-      <Items itemsData={itemsData} handleDeleteItemClick={handleDeleteItemClick} handleCheckItemClick={handleCheckItemClick} category={selectedCategory} />
+      <Items itemsData={searchedItems.length == 0 ? itemsData : searchedItems} handleDeleteItemClick={handleDeleteItemClick} handleCheckItemClick={handleCheckItemClick} category={selectedCategory} />
       <div className="todo__shoes">
         <div className="todo__shoes-left">
-          <img src={searchIcon} alt="" className="todo__search" />
+          <img src={searchIcon} alt="" className="todo__search" onClick={() => setIsSearching(!isSearching)} />
+          {isSearching && <input type="text" placeholder="search..." onKeyUp={handleSearchEnter} />}
           <p className="todo__text--shoes">Items left: {itemsLength}</p>
         </div>
         <div className="todo__shoes-categories">
@@ -71,5 +78,9 @@ const Todo = () => {
     </div>
   );
 };
+
+function patternMatching(pattern, items) {
+  return items.filter((item) => item.title == pattern);
+}
 
 export default Todo;

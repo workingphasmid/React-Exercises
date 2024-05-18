@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Items.css";
 
-function Items({ itemsData, handleDeleteItemClick, handleCheckItemClick, category }) {
+function Items({ itemsData, handleDeleteItemClick, handleCheckItemClick, category, searchedItem }) {
   const [updatingId, setupdatingId] = useState(null);
 
   if (category == "Active") {
