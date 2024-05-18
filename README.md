@@ -11,3 +11,5 @@
    Preview
 
    ![TODO App Preview](./TODO%20App/resources/Design.jpg)
+
+   Status - Done
