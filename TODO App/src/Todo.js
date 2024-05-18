@@ -13,6 +13,7 @@ let nextId = 0;
 
 const Todo = () => {
   const [itemsData, setItemsData] = useState(initialItemsData);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [newTask, setNewTask] = useState("");
 
   function handleClickAdd() {
@@ -49,16 +50,22 @@ const Todo = () => {
           Add
         </button>
       </div>
-      <Items itemsData={itemsData} handleDeleteItemClick={handleDeleteItemClick} handleCheckItemClick={handleCheckItemClick} />
+      <Items itemsData={itemsData} handleDeleteItemClick={handleDeleteItemClick} handleCheckItemClick={handleCheckItemClick} category={selectedCategory} />
       <div className="todo__shoes">
         <div className="todo__shoes-left">
           <img src={searchIcon} alt="" className="todo__search" />
           <p className="todo__text--shoes">Items left: {itemsLength}</p>
         </div>
         <div className="todo__shoes-categories">
-          <p className="todo__text--shoes">All</p>
-          <p className="todo__text--shoes">Active</p>
-          <p className="todo__text--shoes">Completed</p>
+          <p className="todo__text--shoes" onClick={() => setSelectedCategory("All")}>
+            All
+          </p>
+          <p className="todo__text--shoes" onClick={() => setSelectedCategory("Active")}>
+            Active
+          </p>
+          <p className="todo__text--shoes" onClick={() => setSelectedCategory("Completed")}>
+            Completed
+          </p>
         </div>
       </div>
     </div>

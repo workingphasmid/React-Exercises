@@ -70,3 +70,7 @@
   align-items: center;
   gap: 16px;
 }
+
+.todo__text--shoes {
+  cursor: pointer;
+}

@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import "./Items.css";
 
-function Items({ itemsData, handleDeleteItemClick, handleCheckItemClick }) {
+function Items({ itemsData, handleDeleteItemClick, handleCheckItemClick, category }) {
   const [updatingId, setupdatingId] = useState(null);
+
+  if (category == "Active") {
+    itemsData = itemsData.filter((item) => item.check == false);
+  } else if (category == "Completed") {
+    itemsData = itemsData.filter((item) => item.check == true);
+  }
 
   return (
     <div className="items">
