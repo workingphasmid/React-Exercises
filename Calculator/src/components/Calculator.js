@@ -18,8 +18,12 @@ export function Calculator() {
         setExpression("0");
         break;
       case "+/-":
-        let negatedExpression = negateExpression(parsedExpression).join("");
+        let negatedExpression = negateLastCharacter(parsedExpression);
         setExpression(negatedExpression);
+        break;
+      case "%":
+        let percentedLastCharacter = percentLastCharacter(parsedExpression);
+        setExpression(percentedLastCharacter);
         break;
       default:
         const newExpression = expression == "0" ? currentInput : expression + currentInput;
@@ -39,12 +43,13 @@ export function Calculator() {
 }
 
 function parseExpression(expression) {
-  let parsedExpression = expression.toString().match(/\d+|\(-\d+\)|\D/g);
+  let parsedExpression = expression.toString().match(/\d+\.\d+|\d+|[-+*/]|\(-\d+\)/g);
+  console.log(parsedExpression);
 
   return parsedExpression;
 }
 
-function negateExpression(expression) {
+function negateLastCharacter(expression) {
   const lastCharacter = expression[expression.length - 1];
   const isNegative = /\(-\d+\)/.test(lastCharacter);
 
@@ -54,7 +59,15 @@ function negateExpression(expression) {
     expression[expression.length - 1] = `(-${lastCharacter})`;
   }
 
-  return expression;
+  return expression.join("");
+}
+
+function percentLastCharacter(expression) {
+  const lastCharacter = expression[expression.length - 1] / 100;
+
+  expression[expression.length - 1] = lastCharacter;
+
+  return expression.join("");
 }
 
 export default Calculator;
