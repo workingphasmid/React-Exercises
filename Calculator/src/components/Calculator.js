@@ -26,6 +26,10 @@ export function Calculator() {
         setExpression(percentedLastCharacter);
         break;
       default:
+        const lastCharacter = parsedExpression[parsedExpression.length - 1];
+        if (/[-+/*.]/.test(lastCharacter) && !/\(-\d+\)/.test(lastCharacter) && isNaN(currentInput)) {
+          break;
+        }
         const newExpression = expression == "0" ? currentInput : expression + currentInput;
         setExpression(newExpression);
     }
@@ -44,7 +48,6 @@ export function Calculator() {
 
 function parseExpression(expression) {
   let parsedExpression = expression.toString().match(/\d+\.\d+|\d+|[-+*/]|\(-\d+\)/g);
-  console.log(parsedExpression);
 
   return parsedExpression;
 }
