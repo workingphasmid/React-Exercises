@@ -26,7 +26,7 @@ export function Left({ handleButtonClick }) {
 }
 
 export function Right({ handleButtonClick }) {
-  const operators = ["/", "x", "-", "+", "="];
+  const operators = ["/", "*", "-", "+", "="];
 
   return (
     <div className="right">

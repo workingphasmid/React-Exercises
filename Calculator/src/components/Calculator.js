@@ -5,7 +5,7 @@ import Buttons, { Left, Right } from "./Buttons";
 import "./Calculator.css";
 
 export function Calculator() {
-  const [expression, setExpression] = useState("");
+  const [expression, setExpression] = useState("0");
 
   function handleInputChange(currentInput) {
     const parsedExpression = parseExpression(expression);
@@ -15,13 +15,15 @@ export function Calculator() {
         setExpression(eval(parsedExpression.join("")));
         break;
       case "AC":
-        setExpression("");
+        setExpression("0");
         break;
       case "+/-":
-        setExpression(negateExpression(expression));
+        let negatedExpression = negateExpression(parsedExpression).join("");
+        setExpression(negatedExpression);
         break;
       default:
-        setExpression(expression + currentInput);
+        const newExpression = expression == "0" ? currentInput : expression + currentInput;
+        setExpression(newExpression);
     }
   }
 
@@ -37,34 +39,20 @@ export function Calculator() {
 }
 
 function parseExpression(expression) {
-  expression = expression.toString();
-
-  const parsedExpression = [];
-  let number = "";
-
-  for (const i of expression) {
-    if (isNaN(i) && number != "") {
-      parsedExpression.push(number);
-      number = "";
-      parsedExpression.push(i);
-    } else {
-      number += i;
-    }
-  }
-  parsedExpression.push(number);
+  let parsedExpression = expression.toString().match(/\d+|\(-\d+\)|\D/g);
 
   return parsedExpression;
 }
 
-let isNegative = false;
-
 function negateExpression(expression) {
+  const lastCharacter = expression[expression.length - 1];
+  const isNegative = /\(-\d+\)/.test(lastCharacter);
+
   if (isNegative) {
-    expression = expression.slice(1);
+    expression[expression.length - 1] = lastCharacter.match(/\d+/)[0];
   } else {
-    expression = "-" + expression;
+    expression[expression.length - 1] = `(-${lastCharacter})`;
   }
-  isNegative = !isNegative;
 
   return expression;
 }
