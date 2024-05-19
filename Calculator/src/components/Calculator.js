@@ -56,7 +56,7 @@ function negateLastCharacter(expression) {
   const lastCharacter = expression[expression.length - 1];
   const isNegative = /\(-\d+\)/.test(lastCharacter);
 
-  if (/^\D/.test(lastCharacter)) {
+  if (/^\D/.test(lastCharacter) || lastCharacter == "0") {
     return expression.join("");
   }
 
