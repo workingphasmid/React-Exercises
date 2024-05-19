@@ -27,7 +27,7 @@ export function Calculator() {
         break;
       default:
         const lastCharacter = parsedExpression[parsedExpression.length - 1];
-        if (/[-+/*.]/.test(lastCharacter) && !/\(-\d+\)/.test(lastCharacter) && isNaN(currentInput)) {
+        if (isNaN(currentInput) && /^\D$/.test(lastCharacter)) {
           break;
         }
         const newExpression = expression == "0" ? currentInput : expression + currentInput;
@@ -47,7 +47,7 @@ export function Calculator() {
 }
 
 function parseExpression(expression) {
-  let parsedExpression = expression.toString().match(/\d+\.\d+|\d+|[-+*/]|\(-\d+\)/g);
+  let parsedExpression = expression.toString().match(/\d+\.\d+|\d+|[-+*/]|-\d+|\(-\d+\)/g);
 
   return parsedExpression;
 }
