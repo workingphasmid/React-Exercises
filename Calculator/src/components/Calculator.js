@@ -8,10 +8,11 @@ export function Calculator() {
   const [expression, setExpression] = useState("");
 
   function handleInputChange(currentInput) {
+    const parsedExpression = parseExpression(expression);
+
     switch (currentInput) {
       case "=":
-        const parsedExpression = parseExpression(expression);
-        setExpression(eval(parsedExpression));
+        setExpression(eval(parsedExpression.join("")));
         break;
       case "AC":
         setExpression("");
@@ -36,17 +37,21 @@ export function Calculator() {
 }
 
 function parseExpression(expression) {
-  let parsedExpression = "";
+  expression = expression.toString();
+
+  const parsedExpression = [];
+  let number = "";
 
   for (const i of expression) {
-    switch (i) {
-      case "x":
-        parsedExpression += "*";
-        break;
-      default:
-        parsedExpression += i;
+    if (isNaN(i) && number != "") {
+      parsedExpression.push(number);
+      number = "";
+      parsedExpression.push(i);
+    } else {
+      number += i;
     }
   }
+  parsedExpression.push(number);
 
   return parsedExpression;
 }
