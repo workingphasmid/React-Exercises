@@ -56,6 +56,10 @@ function negateLastCharacter(expression) {
   const lastCharacter = expression[expression.length - 1];
   const isNegative = /\(-\d+\)/.test(lastCharacter);
 
+  if (/^\D/.test(lastCharacter)) {
+    return expression.join("");
+  }
+
   if (isNegative) {
     expression[expression.length - 1] = lastCharacter.match(/\d+/)[0];
   } else {
@@ -66,9 +70,9 @@ function negateLastCharacter(expression) {
 }
 
 function percentLastCharacter(expression) {
-  const lastCharacter = expression[expression.length - 1] / 100;
+  const lastCharacter = expression[expression.length - 1];
 
-  expression[expression.length - 1] = lastCharacter;
+  expression[expression.length - 1] = lastCharacter / 100;
 
   return expression.join("");
 }
