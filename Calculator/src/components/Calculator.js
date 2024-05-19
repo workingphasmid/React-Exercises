@@ -7,16 +7,16 @@ import "./Calculator.css";
 export function Calculator() {
   const [expression, setExpression] = useState("");
 
-  function handleButtonClick(currentButton) {
-    setExpression(expression + currentButton);
+  function handleInputChange(currentInput) {
+    setExpression(expression + currentInput);
   }
 
   return (
     <div className="calculator">
-      <input type="text" className="calculator__input" value={expression} onChange={(e) => setExpression(e.target.value)} />
+      <input type="text" className="calculator__input" value={expression} onChange={(e) => handleInputChange(e.target.value)} />
       <Buttons>
-        <Left handleButtonClick={handleButtonClick} />
-        <Right handleButtonClick={handleButtonClick} />
+        <Left handleButtonClick={handleInputChange} />
+        <Right handleButtonClick={handleInputChange} />
       </Buttons>
     </div>
   );
