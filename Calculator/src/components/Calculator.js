@@ -8,11 +8,16 @@ export function Calculator() {
   const [expression, setExpression] = useState("");
 
   function handleInputChange(currentInput) {
-    if (currentInput == "=") {
-      const parsedExpression = parseExpression(expression);
-      setExpression(eval(parsedExpression));
-    } else {
-      setExpression(expression + currentInput);
+    switch (currentInput) {
+      case "=":
+        const parsedExpression = parseExpression(expression);
+        setExpression(eval(parsedExpression));
+        break;
+      case "AC":
+        setExpression("");
+        break;
+      default:
+        setExpression(expression + currentInput);
     }
   }
 
