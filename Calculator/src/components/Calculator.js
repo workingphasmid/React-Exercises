@@ -16,6 +16,9 @@ export function Calculator() {
       case "AC":
         setExpression("");
         break;
+      case "+/-":
+        setExpression(negateExpression(expression));
+        break;
       default:
         setExpression(expression + currentInput);
     }
@@ -46,6 +49,19 @@ function parseExpression(expression) {
   }
 
   return parsedExpression;
+}
+
+let isNegative = false;
+
+function negateExpression(expression) {
+  if (isNegative) {
+    expression = expression.slice(1);
+  } else {
+    expression = "-" + expression;
+  }
+  isNegative = !isNegative;
+
+  return expression;
 }
 
 export default Calculator;
