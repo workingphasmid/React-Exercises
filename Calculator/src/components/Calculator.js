@@ -8,7 +8,12 @@ export function Calculator() {
   const [expression, setExpression] = useState("");
 
   function handleInputChange(currentInput) {
-    setExpression(expression + currentInput);
+    if (currentInput == "=") {
+      const parsedExpression = parseExpression(expression);
+      setExpression(eval(parsedExpression));
+    } else {
+      setExpression(expression + currentInput);
+    }
   }
 
   return (
@@ -20,6 +25,22 @@ export function Calculator() {
       </Buttons>
     </div>
   );
+}
+
+function parseExpression(expression) {
+  let parsedExpression = "";
+
+  for (const i of expression) {
+    switch (i) {
+      case "x":
+        parsedExpression += "*";
+        break;
+      default:
+        parsedExpression += i;
+    }
+  }
+
+  return parsedExpression;
 }
 
 export default Calculator;
